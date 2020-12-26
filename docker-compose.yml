@@ -34,7 +34,6 @@ services:
     depends_on:
       -  php
       -  db
-      -  cloud9
 
   admin:
     image: phpmyadmin/phpmyadmin
@@ -47,13 +46,3 @@ services:
       - 8888:80
     volumes:
       - /sessions
-
-  cloud9:
-    build:
-      context: .
-      dockerfile: Dockerfile-cloud9
-    command: "node /c9sdk/server.js -w /src --port 8181 --listen 0.0.0.0 --auth :"
-    ports:
-      - 8181:8181
-    volumes:
-      - ./src:/src
